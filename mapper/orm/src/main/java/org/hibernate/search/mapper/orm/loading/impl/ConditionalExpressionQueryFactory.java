@@ -37,7 +37,7 @@ public abstract class ConditionalExpressionQueryFactory<E, I> implements TypeQue
 			Set<? extends Class<? extends E>> includedTypesFilter, ConditionalExpression conditionalExpression) {
 		return createQueryWithConditionalExpression( session,
 				"select e. " + uniquePropertyName + " from " + entityMappingType.getEntityName() + " e",
-				(Class<I>) entityMappingType.getIdentifierMapping().getJavaType().getJavaTypeClass(), "e",
+				(Class<I>) entityMappingType.getDeclaredAttributeMappings().get( uniquePropertyName ).getJavaType().getJavaTypeClass(), "e",
 				includedTypesFilter, conditionalExpression
 		);
 	}
